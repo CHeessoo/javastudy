@@ -13,7 +13,7 @@ public static void main(String[] args) {
   /*
    * 키워드 규칙
    * 1. 프로젝트 : 맘대로
-   * 2. 패키기   : 모두 소문자로 작성(실무는 회사 도메인을 거꾸로 작성 : com.samsung.xxx)
+   * 2. 패키지   : 모두 소문자로 작성(실무는 회사 도메인을 거꾸로 작성 : com.samsung.xxx)
    * 3. 클래스   : Upper Camel Case(첫 글자가 대문자인 Camel Case)
    * 4. 메소드   : Lower Camel Case(첫 글자가 소문자인 Camel Case)
    * 5. 변수     : Lower Camel Case(첫 글자가 소문자인 Camel Case)

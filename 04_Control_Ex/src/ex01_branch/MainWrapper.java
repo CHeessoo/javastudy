@@ -269,12 +269,6 @@ public class MainWrapper {
       ch -= 32;   // ch = ch -32;
     }
     
-    char ch1 = 'a' + 2;
-    
-    
-    
-    System.out.println(ch1);
-        
     
     System.out.println(ch);
     

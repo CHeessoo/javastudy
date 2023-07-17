@@ -2,6 +2,8 @@ package ex02_loop;
 
 import java.util.Iterator;
 
+import javax.swing.RowFilter;
+
 public class MainWrapper {
   
   public static void ex01() {
@@ -122,38 +124,52 @@ public class MainWrapper {
   
   public static void ex05() {
     // 삼각별 출력하기 - 1 (2중 loop)
-    //     b=12345 
-    // a=1   *
-    // a=2   **
-    // a=3   ***
-    // a=4   ****
-    // a=5   *****
+    //     star=12345 
+    // row=1    *
+    // row=2    **
+    // row=3    ***
+    // row=4    ****
+    // row=5    *****
+    //
+    // row = 1, star = 1~1
+    // row = 2, star = 1~2
+    // row = 3, star = 1~3
+    // row = 4, star = 1~4
+    // row = 5, star = 1~5
     
     // 참고할 코드
     // System.out.print("*");  // *를 출력한 뒤 줄을 바꾸지 않는다.
     // System.out.println();   // 줄 바꾸기
     
-    for(int a = 1; a <= 5; a++) {
-      System.out.println();
-      for(int b = 1; b <= a; b++) {
-        System.out.print("*");
+    // 5줄 출력
+    for(int row = 1; row <= 5; row++) { 
+      // 별 반복 출력
+      for(int star = 1; star <= row; star++) {
+        System.out.print("*");  // 줄바꿈X
       }
+      // 줄 바꿈
+      System.out.println();
     }
     
   }
   
   public static void ex06() {
     // 삼각별 출력하기 - 2 (2중 loop)
-    //     b=12345
-    // a=1   *****
-    // a=2   ****
-    // a=3   ***
-    // a=4   **
-    // a=5   *
+    //     satr=12345
+    // row=1    *****
+    // row=2    ****
+    // row=3    ***
+    // row=4    **
+    // row=5    *
+    //
+    // row = 1, star = 1~5
+    // row = 2, star = 1~4
+    // row = 3, star = 1~3
+    // row = 4, star = 1~2
+    // row = 5, star = 1~1
     
-    
-    for(int a = 1; a <= 5; a++) {
-      for(int b = 5; b >= a; b--) {
+    for(int row = 1; row <= 5; row++) {
+      for(int star = 1; star <= 6 - row; star++) {
         System.out.print("*");
       }
       System.out.println();
@@ -163,69 +179,114 @@ public class MainWrapper {
   
   public static void ex07() {
     // 삼각별 출력하기 - 3 (2중 loop)
-    //     b=123456789
-    // a=1       *
-    // a=2      ***
-    // a=3     *****
-    // a=4    *******
-    // a=5   *********
+    //     space/star=123456789
+    // row=1              *
+    // row=2             ***
+    // row=3            *****
+    // row=4           *******
+    // row=5          *********
+    //
+    // row=1, space=1~4, star=5~5
+    // row=2, space=1~3, star=4~6
+    // row=3, space=1~2, star=3~7
+    // row=4, space=1~1, star=2~8
+    // row=5, space=1~0, star=1~9
     
-    
-    for(int i = 1; i <= 5; i++) {
-      for(int j = 1; j <= 5-i; j++) {
+    /*
+    // 줄 출력
+    for(int row = 1; row <= 5; row++) {
+      //공백 출력
+      for(int space = 1; space <= 5 - row; space++) {
         System.out.print(" ");
       } 
-      for(int k = 1; k <= (i*2)-1; k++) {
+      // 별 출력
+      for(int star = 1; star <= (row*2)-1; star++) {
         System.out.print("*");
       }
       System.out.println();
     }
+    */
+    
+    // 줄 출력
+    for(int row = 1; row <= 5; row++) {
+      //공백 출력
+      for(int space = 1; space <= 5 - row; space++) {
+        System.out.print(" ");
+      } 
+      // 별 출력
+      for(int star = 6-row; star <= row+4; star++) {
+        System.out.print("*");
+      }
+      System.out.println();
+    }
+    
+    
     
   }
   
   public static void ex08() {
     // 삼각별 출력하기 - 4 (2중 loop)
-    //     b=123456789
-    // a=1   *********
-    // a=2    *******
-    // a=3     *****
-    // a=4      ***
-    // a=5       *
+    //     space/star=123456789
+    // row=1          *********
+    // row=2           *******
+    // row=3            *****
+    // row=4             ***
+    // row=5              *
+    //
+    // row=1, space=1~0, star=1~9
+    // row=2, space=1~1, star=2~8
+    // row=3, space=1~2, star=3~7
+    // row=4, space=1~3, star=4~6
+    // row=5, space=1~4, star=5~5
+    
+    // row 출력
+    for(int row=1; row <=5; row++) {
+      // 공백 출력
+      for(int space=1; space <= row-1; space++) {
+        System.out.print(" ");
+      }
+      // 별 출력
+      for(int star=row; star <= 10-row; star++) {
+        System.out.print("*");
+      }
+      // 줄 바꿈
+      System.out.println();
+    }
     
     
     // 첫번째 방법
     //5줄 출력 (순차)
-    for(int i = 1; i <= 5; i++) {   // 1-2-3-4-5
-      
-      // 공백 - 순차출력
-      for(int j = 1; j < i; j++) {  
-        System.out.print(" ");
-      }
-      // 별 - 역순
-      for(int k = 9; k >= (i*2)-1; k--) { 
-        System.out.print("*");
-      }
-      //줄바꿈
-      System.out.println();
-    }
-    
-    
-    
-    // 2번째 방법
-    // 5줄 출력 (역순)
-    for(int i = 5; i >= 1; i--) {   // 5-4-3-2-1
-      
-      //공백 순차출력
-      for(int j = 0; j < 5-i; j++) {  
-        System.out.print("@");
-      }
-      //별 (5줄 끝나면 반복도 끝나도록)
-      for(int k = 1; k <= (i*2)-1; k++) { 
-        System.out.print("*");
-      }
-      // 줄 바꾸기
-      System.out.println();
-    }
+//    for(int i = 1; i <= 5; i++) {   // 1-2-3-4-5
+//      
+//      // 공백 - 순차출력
+//      for(int j = 1; j < i; j++) {  
+//        System.out.print(" ");
+//      }
+//      // 별 - 역순
+//      for(int k = 9; k >= (i*2)-1; k--) { 
+//        System.out.print("*");
+//      }
+//      //줄바꿈
+//      System.out.println();
+//    }
+//    
+//    
+//    
+//    // 2번째 방법
+//    // 5줄 출력 (역순)
+//    for(int i = 5; i >= 1; i--) {   // 5-4-3-2-1
+//      
+//      //공백 순차출력
+//      for(int j = 0; j < 5-i; j++) {  
+//        System.out.print("@");
+//      }
+//      //별 (5줄 끝나면 반복도 끝나도록)
+//      for(int k = 1; k <= (i*2)-1; k++) { 
+//        System.out.print("*");
+//      }
+//      // 줄 바꾸기
+//      System.out.println();
+//    }
 
   }
   
@@ -235,10 +296,10 @@ public class MainWrapper {
     // ex02();
     // ex03();
     // ex04();
-    ex05();
+    // ex05();
     // ex06();
     // ex07();
-    // ex08();
+     ex08();
     
   }
 

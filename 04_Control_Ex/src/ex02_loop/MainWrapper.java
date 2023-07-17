@@ -14,7 +14,7 @@ public class MainWrapper {
     
     /* 2단만 출력
     for(int i = 1; i <= 9; i++) {
-      System.out.println(dan + "*" + i + "=" + (dan * i));
+      System.out.println(dan + "x" + i + "=" + (dan * i));
     }
     */
     
@@ -23,7 +23,7 @@ public class MainWrapper {
     for(dan = 2; dan <=9; dan++) {
       System.out.println("==" + dan + "단==");
       for(int i = 1; i <= 9; i++) {
-        System.out.println(dan + "*" + i + "=" + dan * i);
+        System.out.println(dan + "x" + i + "=" + dan * i);
       }
     }
     
@@ -34,39 +34,44 @@ public class MainWrapper {
   }
   
   public static void ex02() {
-    // 100000 넘을 때까지 60원씩 모금하면서 과정 출력하기
+    // 100000원 넘을 때까지 60원씩 모금하면서 과정 출력하기
     // 1회 모금액 60원, 현재 모금액 60원
     // 2회 모금액 60원, 현재 모금액 120원
     // 3회 모금액 60원, 현재 모금액 180원
     // ...
     // 1667회 모금액 60원, 현재 모금액 100020원
-    int goal = 100000;  // 목표 모금액
+    final int GOAL = 100000;  // 목표 모금액
     int money = 60;  // 1회당 모금액
     int total = 0;  // 모금액 합계
     int nth = 0;  // 회차
     
-    
-    for(nth = 1; total <= goal; nth++) {
-      total = money * nth;
+    /*
+    for(nth = 1; total <= GOAL; nth++) {
+      total += money;
+      System.out.println(nth + "회 모금액 " + money + "원, 현재 모금액 " + total + "원");
+      */
+      
+    while (total <= GOAL) {
+      total += money;
+      nth++;
       System.out.println(nth + "회 모금액 " + money + "원, 현재 모금액 " + total + "원");
     }
-    
-    
-    
   }
+  
   
   public static void ex03() {
     // 전체 구구단 출력하기 - 1
     // 2 x 1 = 2
     // ...
     // 9 x 9 = 81
+    // 고정 값 : 바깥 LOOP에 배치
     // ex01();
     
     
     for(int i = 2; i <= 9; i++) {
       System.out.println();
       for(int j = 1; j <= 9; j++) {
-        System.out.println(i + "*" + j + "=" + i*j);
+        System.out.println(i + "x" + j + "=" + i*j);
       }
     }
     
@@ -81,15 +86,37 @@ public class MainWrapper {
     // 2x9=18 3x9=27 4x9=36 ... 9x9=81
     
     // 참고할코드
-//    System.out.print("2x1=2");  // 2x1=2를 출력한 뒤 줄을 바꾸지 않는다.
+    // System.out.print("2x1=2");  // 2x1=2를 출력한 뒤 줄을 바꾸지 않는다.
     
-    for(int i = 2; i <= 9; i++) {
-      System.out.println();
-      for(int j = 1; j <= 9; j++) {
-        System.out.print(i + "*" + j + "=" + i*j + "  ");
+    /* 탭키를 이용한 줄 맞춤
+    for(int n = 1; n <= 9; n++) {
+      for(int dan = 2; dan <= 9; dan++) {
+        System.out.print(dan + "x" + n + "=" + (dan*n) + "\t");   // 탭 키 : 고정된 간격으로 나눠진 구역을 옮겨다닐 수 있음.
       }
+      System.out.println();   // 줄 바꿈
     }
+    */
     
+    /* 줄 맞춤 예제
+    String str1 = String.format("%d", 10);    // %d  = 정수
+    String str2 = String.format("%3d", 10);   // %3d = 두자리 정수
+    String str3 = String.format("%4d", 10);   // %4d = 네자리 정수  : 네자리로 출력하라
+    
+    String str4 = String.format("%-3d", 10);  // -가 붙으면 오른쪽 공백
+    String str5 = String.format("%-4d", 10);
+
+    System.out.print(str3 + str2 + str1);
+    System.out.println();
+    System.out.print(str5 + str4);
+     */
+    
+    
+    for(int n = 1; n <= 9; n++) {
+      for(int dan = 2; dan <= 9; dan++) {
+        System.out.print(dan + "x" + n + "=" + String.format("%-4d", (dan*n)));   // dan*n값을 4자리 폭으로 줄 맞춰서 숫자 먼저 출력  
+      }
+      System.out.println();   // 줄 바꿈
+    }
     
   }
   
@@ -204,17 +231,17 @@ public class MainWrapper {
   
   public static void main(String[] args) {
     
-//    ex01();
-//    ex02();
-//    ex03();
-//    ex04();
-//    ex05();
-//    ex06();
-//    ex07();
-    ex08();
-    
+    // ex01();
+    // ex02();
+    // ex03();
+    // ex04();
+    ex05();
+    // ex06();
+    // ex07();
+    // ex08();
     
   }
 
 
+//  단축키 ctrl + shift + x : 대문자 변환
 }

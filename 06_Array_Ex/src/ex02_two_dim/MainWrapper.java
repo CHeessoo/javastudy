@@ -63,7 +63,7 @@ public class MainWrapper {
     // apt[1][0] = 201호 = 2
     // apt[1][1] = 202호 = 2
     // ---------------------
-    // apt[i][j] = ((i +1) * 100) + (j + 1)
+    // apt[i][j] = ((i +1) * 100) + (j + 1))
     for(int i = 0; i < apt.length;i ++) {
       for(int j = 0; j <apt[i].length; j++) {
         System.out.println(((i +1) * 100) + (j + 1) + "호: " + apt[i][j]);
@@ -189,7 +189,7 @@ public class MainWrapper {
   public static void main(String[] args) {
     
     // ex01();
-     ex02();
+    // ex02();
     // ex03();
     // ex04();
     // ex05();

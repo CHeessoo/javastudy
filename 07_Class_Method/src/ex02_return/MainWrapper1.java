@@ -23,7 +23,7 @@ public class MainWrapper1 {
     System.out.println(getAge());   // 30
     
     // true, false 반환 (주로 is를 사용)
-    System.out.println(isAlive());  // true
+    System.out.println(isAlive());  // false
     
     // 취미를 3개 반환
     System.out.println(Arrays.toString(getHobbies()));  // [여행, 수영, 영화]

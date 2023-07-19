@@ -127,7 +127,7 @@ public class MainWrapper {
   
   public static void ex07() {
     
-    // 중첩(nestex) for문
+    // 중첩(nested) for문
     for(int day = 1; day <= 5; day++) {
       System.out.println("  ===" + day + "일차입니다.===");
       for(int hour = 1; hour <= 8; hour++) {

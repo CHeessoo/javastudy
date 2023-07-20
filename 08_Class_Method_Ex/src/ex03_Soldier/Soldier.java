@@ -5,10 +5,12 @@ public class Soldier {
   private Gun gun;
   
   // 군인 생성자
+  public Soldier(Gun gun) {
+    this.gun = gun;
+  }
+  // 군인 생성자 객체생성 버전
   public Soldier(int bullet) {
-    // 총 객체 생성
     gun = new Gun(bullet);
-    
   }
   
   // 군인 장전

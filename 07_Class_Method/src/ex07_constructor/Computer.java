@@ -9,7 +9,7 @@ package ex07_constructor;
  *    2) 생성자의 이름은 클래스의 이름과 같다. 바꿀 수 없다.
  *    3) 반환(return)이 존재하지 않는다. 반환(return)이 없다는 의미의 void가 아니라 반환(return)이라는 개념 자체가 없다.
  *    4) 파라미터는 일반 메소드와 동일하게 사용할 수 있다. 메소드 오버로딩(overloading)이 가능하다.(생성자를 여러 개 만들 수 있다.)
- * 4. 생성자를 안 만들면 Java가 "디폴트 생성자"가 사용된다.
+ * 4. 생성자를 안 만들면 Java가 만든 "디폴트 생성자"가 사용된다.
  */
 
 /*
@@ -28,7 +28,7 @@ public class Computer {
     System.out.println("Computer() 생성자가 호출되었다.");
   }
   
-  public Computer(String model) {   // 생성자에서도 Setter처럼 필드에 값을 줄 수 있다.
+  public Computer(String model) {   // 생성자에서도 Setter처럼 필드에 값을 저장할 수 있다. (생성할 때 Setter까지 같이 쓰고 싶으면 생성자를 만들면 된다.)
     System.out.println("Computer(String model) 생성자가 호출되었다.");
     this.model = model;
   }

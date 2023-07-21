@@ -1,6 +1,7 @@
 package exam;
 
 import java.util.Iterator;
+import java.util.concurrent.ForkJoinTask;
 
 public class MainWrapper {
 
@@ -19,7 +20,8 @@ public class MainWrapper {
     // q11();
     // q12();
     // q13();
-    q14();
+    // q14();
+    kaprika();
   }
   
   // q1. 절대값 구하기
@@ -193,9 +195,23 @@ public class MainWrapper {
 	
 	
 	// 카프리카 수 판별하기
-	// 2자리(10~99) 또는 4자리 (10000 ~ 9999) 수 대상
+	// 2자리(10~99) 또는 4자리 (1000 ~ 9999) 수 대상
 	// 앞 뒤로 숫자를 분리 -> 각 숫자를 더함 -> 더한 수의 제곱을 구함 -> 자신과 같은가?
 	// 81 -> 8   1 로 분리 -> 9 -> 9 * 9 -> 81
+	public static void kaprika() {
+	  int div;
+	  int percent;
+	  int sum;
+	  for(int n = 10; n < 100; n++) {
+	    div = n / 10;
+	    percent = n % 10;
+	    sum = div + percent;
+	    if(sum * sum == n) {
+	      System.out.println(n + "은 카프리카 수 입니다.");
+	    }
+	  }
+    
+  }
 	
 	
 	

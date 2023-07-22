@@ -21,7 +21,7 @@ public class MainWrapper {
     // q12();
     // q13();
     // q14();
-    kaprika();
+    kaprekar();
   }
   
   // q1. 절대값 구하기
@@ -198,7 +198,7 @@ public class MainWrapper {
 	// 2자리(10~99) 또는 4자리 (1000 ~ 9999) 수 대상
 	// 앞 뒤로 숫자를 분리 -> 각 숫자를 더함 -> 더한 수의 제곱을 구함 -> 자신과 같은가?
 	// 81 -> 8   1 로 분리 -> 9 -> 9 * 9 -> 81
-	public static void kaprika() {
+	public static void kaprekar() {
 	  int div;
 	  int percent;
 	  int sum;

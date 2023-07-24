@@ -215,8 +215,6 @@ public class MainWrapper {
 	
 	
 	
-	
-	
 	// q9. 구구단을 모두 출력하지 말고 5 x 5 = 25까지만 출력하시오.
 	// 예시
 	// 2 x 1 = 2
@@ -224,9 +222,9 @@ public class MainWrapper {
 	// ...
 	// 5 x 5 = 25
 	public static void q9() {
-	  for(int dan = 1; dan <= 5; dan++) { // <<-------------------┐
+	  for(int dan = 2; dan <= 5; dan++) { // <<-------------------┐
 	    System.out.println("---" + dan + "단---");             // │
-	    for(int n = 2; n <= 9; n++) {                          // │
+	    for(int n = 1; n <= 9; n++) {                          // │
 	      System.out.println(dan + "x" + n + "=" + (dan * n)); // │
 	      if(dan == 5 && n == 5) {                             // │  
 	        break; //---------------------------------------------┘
@@ -239,9 +237,9 @@ public class MainWrapper {
 	   * 라벨(이름)을 정해서 바깥 for문에서 바로 break; 하는 방법
 	   * 
 	    outer:
-	    for(int dan = 1; dan <= 5; dan++) { 
+	    for(int dan = 2; dan <= 5; dan++) { 
         System.out.println("---" + dan + "단---");  
-        for(int n = 2; n <= 9; n++) {  
+        for(int n = 1; n <= 9; n++) {  
           System.out.println(dan + "x" + n + "=" + (dan * n)); 
           if(dan == 5 && n == 5) {      
           break outer; 

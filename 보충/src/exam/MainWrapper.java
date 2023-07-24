@@ -10,7 +10,7 @@ public class MainWrapper {
     // q1();
     // q2();
     // q3();
-    // q4();
+     q4();
     // q5();
     // q6();
     // q7();
@@ -90,7 +90,7 @@ public class MainWrapper {
   // 예시2)
   // 13월은 잘못된 정보입니다.
   public static void q4() {
-    int month = 13;
+    int month = 8;
     String[] season = {"겨울", "봄", "여름", "가을"};
     int[] lastDay = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     
@@ -98,7 +98,7 @@ public class MainWrapper {
       System.out.println(month + "월은 잘못된 정보입니다.");
       // return;
     } else {
-      System.out.println(month + "월은 " + season[month % 12 / 5] + "입니다.");
+      System.out.println(month + "월은 " + season[month % 12 / 3] + "입니다.");
       System.out.println(month + "월은 " + lastDay[month] + "일까지 있습니다."); 
     }
   }
@@ -186,7 +186,7 @@ public class MainWrapper {
 		
 //	// switch문 예시
 //	switch (number / 1000000) {
-//	case 1: case 2: case 3:
+//	case 1: case 3: case 5:
 //	  System.out.println("남자입니다.");
 //	  break;
 //	default:

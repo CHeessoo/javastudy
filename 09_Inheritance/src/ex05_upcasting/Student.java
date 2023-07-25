@@ -1,6 +1,5 @@
 package ex05_upcasting;
 
-import java.net.Socket;
 
 // Student is a Person
 // 서브 클래스(자식) is a 슈퍼 클래스(부모)

@@ -42,7 +42,5 @@ public class Person {
   public void info() {
     System.out.println("이름: " + name);
   }
-  
-  
 
 }

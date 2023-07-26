@@ -16,11 +16,10 @@ public class Food {
     this.name = name;
   }
 
+  //참조값이 아닌 객체에 들어있는 데이터를 확인하기 위해 오버라이드
   @Override
   public String toString() {
     return "Food [name=" + name + "]";
   }
-  
-  
 
 }

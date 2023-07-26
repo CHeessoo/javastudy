@@ -6,5 +6,4 @@ public class AppleMango extends Food implements Eatable {
     super(name);  // 슈퍼 클래스의 public Food(String name) { } 생성자 호출 
   }
 
-
 }

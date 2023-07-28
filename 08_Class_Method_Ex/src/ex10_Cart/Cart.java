@@ -3,7 +3,7 @@ package ex10_Cart;
 public class Cart {
   
   /* Product 배열 길이 */  private final int CART_LENGTH = 10;
-  /* Product 배열 */       private Product[] products;
+  /* Product 배열 */       private Product[] products;  // 시간 되면 ArrayList로 바꿔서 풀어보기
   /* 담긴 Product 갯수 */  private int prodCount;
   
   // new Cart()

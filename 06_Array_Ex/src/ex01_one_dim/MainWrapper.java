@@ -1,11 +1,5 @@
 package ex01_one_dim;
 
-import java.io.InterruptedIOException;
-import java.io.StreamCorruptedException;
-import java.util.Arrays;
-
-import javax.xml.stream.XMLInputFactory;
-
 public class MainWrapper {
   
   public static void ex01() {

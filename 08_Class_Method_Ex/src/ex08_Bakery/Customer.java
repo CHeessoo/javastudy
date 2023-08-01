@@ -15,7 +15,7 @@ public class Customer {
   public int getCount() {
     return count;
   }
-  public void seyCount(int count) {
+  public void setCount(int count) {
     this.count = count;
   }
   

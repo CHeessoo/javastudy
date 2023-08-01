@@ -1,5 +1,9 @@
 package ex01_Scanner;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class MainWrapper {
   
   // 문제1. Scanner 클래스의 next() 메소드를 이용해서 사용자로부터 문자열을 계속 입력 받는다.
@@ -10,7 +14,21 @@ public class MainWrapper {
   // 문자열 입력 >>> exit
   // 2번만에 exit가 입력되었다.
   public static void ex01() {
+    List<String> input = new ArrayList<String>();
     
+    // Scanner 객체 선언 & 생성
+    Scanner scanner = new Scanner(System.in);  
+    
+    
+    // String 입력
+    System.out.println("문자열을 입력하세요.");
+    
+    while(true) {
+      
+      if(input.equals("exit")){
+        scanner.close();
+      }
+    }
   }
 
   // 문제2. "대한민국의 수도는?" 퀴즈 정답을 맞힐때까지 계속 퀴즈를 내시오.

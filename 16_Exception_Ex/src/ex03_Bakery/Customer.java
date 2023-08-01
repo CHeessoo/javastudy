@@ -1,4 +1,6 @@
-package ex08_Bakery;
+package ex03_Bakery;
+
+import java.util.Map;
 
 public class Customer {
   
@@ -15,7 +17,7 @@ public class Customer {
   public int getCount() {
     return count;
   }
-  public void seyCount(int count) {
+  public void setCount(int count) {
     this.count = count;
   }
   
@@ -34,23 +36,23 @@ public class Customer {
    * @param bakery 빵을 구매할 Bakery
    * @param count 구매할 빵의 갯수
    * @param money 구매할 때 낸 돈
+   * @throws RuntimeException Bakery 클래스의 sell 메소드가 전달한 예외, 구매 금액 부족
    */
-  public void buy(Bakery bakery, int count, int money) {
+  public void buy(Bakery bakery, int count, int money) throws RuntimeException {
     
     // 고객이 가진 돈보다 더 많은 돈을 내려고 한다.
     if(this.money < money) {
-      System.out.println("구매 불가합니다.(가진 돈이 부족하다.)");
-      return;
+      throw new RuntimeException("구매 불가합니다.(가진 돈이 부족하다.)");
     }
     
     // bakery에 count와 money를 전달하고 빵과 잔돈을 받는다.
-    BreadChange bc = bakery.sell(count, money);
+    Map<String, Integer> map = bakery.sell(count, money);
     
     // 구매 처리
-    if(bc != null) {
-      this.count += bc.getBread();  // 빵 3개 받기
+    if(map != null) {
+      this.count += map.get("bread");  // 빵 3개 받기
       this.money -= money;          // 10000원 내고,
-      this.money += bc.getChange(); // 4000원 받기
+      this.money += map.get("change"); // 4000원 받기
     }
     
   }

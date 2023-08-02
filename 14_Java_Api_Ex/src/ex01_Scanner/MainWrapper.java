@@ -15,20 +15,16 @@ public class MainWrapper {
   // 2번만에 exit가 입력되었다.
   public static void ex01() {
     List<String> input = new ArrayList<String>();
-    
-    // Scanner 객체 선언 & 생성
-    Scanner scanner = new Scanner(System.in);  
-    
-    
-    // String 입력
-    System.out.println("문자열을 입력하세요.");
-    
-    while(true) {
-      
-      if(input.equals("exit")){
-        scanner.close();
+    String str;
+    Scanner sc = new Scanner(System.in);
+    do {
+      System.out.println("문자열 입력 >>> ");
+      str = sc.next();
+      for(int i = 0, length = input.size(); i < length; i++) {
+        input.get(i) =str; // 아니지만 일단 기억 저장용;
       }
-    }
+    } while(!str.equals("exit"));
+    sc.close();
   }
 
   // 문제2. "대한민국의 수도는?" 퀴즈 정답을 맞힐때까지 계속 퀴즈를 내시오.

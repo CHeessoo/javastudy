@@ -1,5 +1,7 @@
 package ex02_String;
 
+import java.util.Scanner;
+
 public class MainWrapper {
 
   // 문제1. 다음 주소를 아래와 같이 분석하여 분리하시오.
@@ -10,7 +12,12 @@ public class MainWrapper {
     String url = "https://comic.naver.com/webtoon/detail?titleId=758037&no=112&weekday=mon";
     String requestURI = "";
     String param = "";
+    int idx = url.indexOf("?");
     
+    requestURI = url.substring(0, idx);
+    param = url.substring(idx+1);
+    System.out.println(requestURI);
+    System.out.println(param);
   }
 
   // 문제2. 다음 파일명을 분석하여 파일명과 확장자를 분리하시오.
@@ -21,6 +28,11 @@ public class MainWrapper {
     String fullName = "apple.jpg";
     String fileName = "";
     String extName = "";
+    int idx = fullName.indexOf(".");
+    fileName = fullName.substring(0, idx);
+    extName = fullName.substring(idx+1);
+    System.out.println(fileName);
+    System.out.println(extName);
     
   }
 
@@ -33,7 +45,13 @@ public class MainWrapper {
   public static void ex03() {
     String beforeName = "";  // 변환 전 파일명
     String afterName = "";   // 변환 후 파일명
-    
+    Scanner sc = new Scanner(System.in);
+    System.out.print("변환 전 파일명 >>> ");
+    beforeName = sc.next();
+    int idx = beforeName.indexOf(".");
+    afterName = beforeName.substring(0, idx+1).replace(".", "_") + System.currentTimeMillis() + beforeName.substring(idx);
+    System.out.println("변환 후 파일명 = " + afterName);
+    sc.close();
   }
   
   // 문제4. 주어진 주민등록번호(personalId)를 분석하여 나이와 성별을 출력하시오.
@@ -58,9 +76,9 @@ public class MainWrapper {
   }
   
   public static void main(String[] args) {
-    ex01();
-    ex02();
-    ex03();
+    // ex01();
+    // ex02();
+    // ex03();
     ex04();
     ex05();
   }

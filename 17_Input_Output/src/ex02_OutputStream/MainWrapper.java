@@ -1,9 +1,11 @@
 package ex02_OutputStream;
 
 import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.nio.charset.StandardCharsets;
 
 public class MainWrapper {
@@ -49,8 +51,8 @@ public class MainWrapper {
         if(fout != null) {  // fout이 생성되지 않았을 때 발생하는 NullPointerException을 방지
           fout.close(); // 출력 스트림은 반드시 닫아줘야 함 (반드시 예외 처리가 필요한 코드)
         }
-      } catch (IOException e2) {
-        e2.printStackTrace();
+      } catch (IOException e) {
+        e.printStackTrace();
       }
     }
     
@@ -93,28 +95,27 @@ public class MainWrapper {
         if(fout != null) {  // 만약 fout이 null값이 아니면
           fout.close();     // close();한다.
         }
-      } catch (IOException e2) {
-        e2.printStackTrace();
+      } catch (IOException e) {
+        e.printStackTrace();
       }
     }
     System.out.println(file.getName() + " 파일 크기 : " + file.length() + "바이트");  // 15바이트
     
   }
   
-  
-  /*
-   * java.io.BufferedOutputStream 클래스
-   * 1. 내부 버퍼를 가지고 있는 출력스트림이다.
-   * 2. 많은 데이터를 한 번에 출력하기 때문에 속도 향상을 위해서 사용한다.
-   * 3. 보조스트림이므로 메인스트림과 함께 사용한다.
+  /**
+   * ex03.dat 만들어보기
+   * 2줄로 안녕하세요
+   *       \n
+   *       반갑습니다
    */
   public static void ex03() {
     
     /*
-     * ex03.dat 만들어보기
-     * 2줄로 안녕하세요
-     *       \n
-     *       반갑습니다
+     * java.io.BufferedOutputStream 클래스
+     * 1. 내부 버퍼를 가지고 있는 출력스트림이다.
+     * 2. 많은 데이터를 한 번에 출력하기 때문에 속도 향상을 위해서 사용한다.
+     * 3. 보조스트림이므로 메인스트림과 함께 사용한다.
      */
     
     // 디렉터리 생성
@@ -166,8 +167,8 @@ public class MainWrapper {
         if(bout != null) {
           bout.close(); // bout이 null이 아니면 close
         }
-      } catch (IOException e2) {
-        e2.printStackTrace();
+      } catch (IOException e) {
+        e.printStackTrace();
       }
     }
     // 확인
@@ -175,10 +176,109 @@ public class MainWrapper {
 
   }
   
+  public static void ex04() {
+    
+    /*
+     * java.io.DataOutputStream 클래스
+     * 1. int, double, String 등의 변수를 그대로 출력하는 출력스트림이다.
+     * 2. 보조스트림이므로 메인스트림과 함께 사용한다.
+     */
+    
+    File dir = new File("C:/storage");
+    if(!dir.exists()) {
+      dir.mkdirs();
+    }
+    
+    File file = new File(dir, "ex04.dat");
+    
+    // 데이터출력스트림 선언
+    DataOutputStream dout = null;
+    
+    try {
+      // 데이터출력스트림 생성
+      dout = new DataOutputStream(new FileOutputStream(file));  // 데이터출력스트림은 메인스트림을 출력한다.
+      
+      // 출력할 데이터
+      String name = "tom";
+      int age = 50;
+      double height = 190.5;
+      String school = "가산대학교";
+      
+      // 출력
+      dout.writeChars(name);    // dout.writeChar('t'), dout.writeChar('o'), dout.writeChar('m')  // writeBytes(); 를 사용해도 된다.
+      dout.writeInt(age);
+      dout.writeDouble(height);
+      dout.writeUTF(school);   // 인코딩을 바로 wrapping해서 보내기 (한글처리)
+      
+    } catch (IOException e) {
+      e.printStackTrace();
+    } finally {
+      try {
+        if(dout != null) {
+          dout.close();
+        }
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+    System.out.println(file.getName() + " 파일 크기 : " + file.length() + "바이트");
+  }
+  
+  public static void ex05() {
+    
+    /*
+     * java.io.ObjectOutputStream 클래스
+     * 1. 객체를 그대로 출력하는 출력스트림이다.
+     * 2. 직렬화(Serializable)된 객체를 보낸 수 있다.
+     * 3. 보조스트림이므로 메인스트림과 함께 사용한다.
+     */
+    
+    File dir = new File("C:/storage");
+    if(!dir.exists()) {
+      dir.mkdirs();
+    }
+    File file = new File(dir, "ex05.dat");
+    
+    // 객체출력스트림 선언
+    ObjectOutputStream oout = null;
+    
+    try {
+      
+      // 객체출력스트림 생성
+      oout = new ObjectOutputStream(new FileOutputStream(file));  // 객체출력스트림 또한 보조스트림으로 사용
+      
+      // 출력할 데이터
+      String name = "tom";
+      int age = 50;
+      double height = 190.5;
+      String school = "가산대학교";
+      Student student = new Student(name, age, height, school);
+      
+      
+      // 출력
+      oout.writeObject(student);
+      
+      
+    } catch (IOException e) {
+      e.printStackTrace();
+    } finally {
+      try {
+        if (oout != null) {
+          oout.close();
+        }
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+    System.out.println(file.getName() + " 파일 크기 : " + file.length() + "바이트");
+  }
+  
   public static void main(String[] args) {
-    ex03();
+    ex05();
   }
 
 }
 // 출력스트림은 덮어쓰기 방식으로 작동하기 때문에 부담없이 여러번 출력이 가능하다.
 // 버퍼출력스트림을 자주 사용하자!
+// 객체는 직렬화 과정을 거친다 : 객체를 통째로 보내는건 불가능해서 직렬화 과정을 거쳐서(객체를 분리해서) 하나씩 보낸다는 의미이다.
+// 직렬화된 객체가 보이는 이유는 스트림으로 이동시키기 위해서이다.

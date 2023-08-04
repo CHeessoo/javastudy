@@ -17,7 +17,7 @@ public class ParkingLot {
   
   public void addCar() {
     System.out.println("현재 등록된 차량 : " + cars.size() + "대");
-    if(cars.size() > MAX - 1) {
+    if(cars.size() >= MAX) {
       System.out.println("만차입니다. 더 이상 차량 등록이 불가능합니다.");
       return;
     }

@@ -1,29 +1,33 @@
 package ex01_Scanner;
 
-import java.util.ArrayList;
+import java.security.KeyStore.Entry;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class MainWrapper {
+  
+  public static Scanner sc = new Scanner(System.in);
   
   // 문제1. Scanner 클래스의 next() 메소드를 이용해서 사용자로부터 문자열을 계속 입력 받는다.
   // 사용자가 "exit" 문자열을 입력하면 더 이상 입력 받지 않는다.
   // 총 몇 번만에 종료되었는지 그 횟수를 마지막에 출력한다.
   // 실행예시)
   // 문자열 입력 >>> apple
-  // 문자열 입력 >>> exit
+  // 문자열 입력 >>> exit/Exit/EXIT
   // 2번만에 exit가 입력되었다.
   public static void ex01() {
-    String str;
+    String str = null;
     int count = 0;
-    Scanner sc = new Scanner(System.in);
     do {
       System.out.print("문자열 입력 >>> ");
       str = sc.next();
       count++;
-    } while(!str.equals("exit"));
+    } while(str.equalsIgnoreCase("exit") == false);
     sc.close();
-    System.out.println(count + "번만에 exit가 입력되었다.");
+    System.out.println(count + "번만에 " + str + "가 입력되었다.");
   }
 
   // 문제2. "대한민국의 수도는?" 퀴즈 정답을 맞힐때까지 계속 퀴즈를 내시오.
@@ -36,17 +40,31 @@ public class MainWrapper {
   // 대한민국의 수도는? >>> 서울
   // 정답입니다.
   public static void ex02() {
-    Scanner sc = new Scanner(System.in);
-    String capital;
+    /* ex01과 유사한 방법으로 풀어본 답안
+    String capital = null;
     do {
+      if(capital != null) {
+        System.out.println("오답입니다.");
+      }
       System.out.print("대한민국의 수도는? >>> ");
       capital = sc.next();
-      if(!(capital.equals("서울") || capital.equalsIgnoreCase("seoul"))) {
-        System.out.println("오답입니다.");
-        }
-      } while(!(capital.equals("서울") || capital.equalsIgnoreCase("seoul")));
-    sc.close();
+      } while(capital.equals("서울") == false && capital.equalsIgnoreCase("seoul") == false);
     System.out.println("정답입니다.");
+    sc.close();
+    */
+    
+    List<String> list = Arrays.asList("서울", "seoul");
+    String capital = null;
+    while(true) {
+      System.out.print("대한민국의 수도는? >>> ");
+      capital = sc.next();
+      if(list.contains(capital.toLowerCase())) {  // Arrays는 단순하게 있다, 없다만 판단한다면 반복문을 돌리지 않고 contains를 이용해도 된다.
+        System.out.println("정답입니다.");
+        break;
+      } else {
+        System.out.println("오답입니다.");
+      }
+    }
     }
     
   // 문제3. 평점 입력 받아서 해당 평점만큼 ★을 출력하시오.
@@ -57,19 +75,16 @@ public class MainWrapper {
   // 평점(1~5) 입력 >>> 3
   // ★★★
   public static void ex03() {
-    Scanner sc = new Scanner(System.in);
-    StringBuilder sb = new StringBuilder();
-    int number;
+    int grade = 0;
     do {
       System.out.print("평점(1~5) 입력 >>> ");
-      number = sc.nextInt();
-    } while(number < 1 || number > 5);
-    sc.close();
-    for(int n = 1; n <= number; n++) {
+      grade = sc.nextInt();
+    } while(grade < 1 || grade > 5);
+    StringBuilder sb = new StringBuilder();
+    for(int n = 0; n < grade; n++) {  // grade만큼 반복
       sb.append("★");
     }
-    String star = sb.toString();
-    System.out.println(star);
+    System.out.println(sb.toString());
   }
   
   // 문제4. 비밀번호는 "1234"이다.
@@ -87,14 +102,12 @@ public class MainWrapper {
   // 비밀번호? >>> 1234
   // 성공
   public static void ex04() {
-    final int MAX = 5;
-    Scanner sc = new Scanner(System.in);
-    
-    for(int n = 0; n < MAX; n++) {
+    final String PWD = "1234";
+    String pwd = null;
+    for(int n = 0; n < 5; n++) {
       System.out.print("비밀번호? >>> ");
-      int pw = sc.nextInt();
-      if(pw == 1234) {
-        sc.close();
+      pwd = sc.next();
+      if(pwd.equals(PWD)) {
         System.out.println("성공");
         return;
       }
@@ -106,23 +119,84 @@ public class MainWrapper {
   // 실행예시)
   // 봄을 영어로 하면? >>> spring
   // 정답
-  // 여름을 영어로 하면? >>> sumer
+  // 여름을 영어로 하면? >>> summer
   // 오답
   // 가을을 영어로 하면? >>> fall
   // 정답
-  // 겨울을 영어로 하면? >>> win
+  // 겨울을 영어로 하면? >>> winter
   // 오답
   public static void ex05() {
+    String[][] dict = {
+        {"봄", "spring"},
+        {"여름", "summer"},
+        {"가을", "fall"},
+        {"겨울",  "winter"}
+    };
+    String answer = null;
+    for(int i = 0; i < dict.length; i++) {
+      
+      // dict[i] 자체가 1차원 배열이다.
+      
+      // dict[i] -> {"봄", "spring"}
+      //   dict[i][0] -> "봄"
+      //   dict[i][1] -> "spring"
+      
+      // dict[i] -> {"여름", "summer"}
+      //   dict[i][0] -> "여름"
+      //   dict[i][1] -> "summer"
+      
+      // dict[i] -> {"가을", "fall"}
+      //   dict[i][0] -> "가을"
+      //   dict[i][1] -> "fall"
+      
+      // dict[i] -> {"겨울", "winter"}
+      //   dict[i][0] -> "겨울"
+      //   dict[i][1] -> "winter"
+      
+      
+      System.out.print(dict[i][0] + "을 영어로 입력하면? >>> ");
+      answer = sc.next();
+      if(answer.equalsIgnoreCase(dict[i][1])) {
+        System.out.println("정답");
+      } else {
+        System.out.println("오답");
+      }
+    }
+  }
+  
+  public static void ex06() {
     
+    // ex05번 LinkedHashMap으로 다시 풀기
+    // LinkedHashMap : Key값을 순서대로 꺼낼 수 있는 HashMap
+    
+    Map<String, String> map = new LinkedHashMap<String, String>();
+    map.put("봄", "spring");
+    map.put("여름", "summer");
+    map.put("가을", "fall");
+    map.put("겨울", "winter");
+//           key   +  value  =>  entry
+    
+    String answer = null;
+    for(Entry<String, String> entry : map.entrySet()) {
+      System.out.println(entry.getKey() + "을 영어로 하면? >>> ");
+      answer = sc.next();
+      if(answer.equalsIgnoreCase(entry.getValue())) {
+        System.out.println("정답");
+      } else {
+        System.out.println("오답");
+      }
+    }
+    }
     
   }
   
   public static void main(String[] args) {
     // ex01();
     // ex02();
-    ex03();
+    // ex03();
     // ex04();
-    ex05();
+    // ex05();
+    ex06();
   }
 
 }

@@ -174,9 +174,6 @@ public class JSON_Library {
       double height = obj.getDouble("height");
       System.out.println((i+1) +  ", " + name + ", " + age + ", " + height);
     }
-    
-    
-    
   }
   
   public static void main(String[] args) {

@@ -16,7 +16,7 @@ public class MainWrapper {
    * 1. 문자 기반의 입력스트림이다.
    * 2. 입력단위
    *    1) int
-   *    2) char[]    (charBuffer도 가능하지만 수업에선 다루지 않는다.)
+   *    2) char[]    (CharBuffer 도 가능하지만 수업에선 다루지 않는다.)
    *    3) String
    */
   

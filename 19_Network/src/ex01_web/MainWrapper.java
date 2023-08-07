@@ -76,7 +76,7 @@ public class MainWrapper {
       url = new URL(spec);
       
       // HttpURLConnection 객체 생성 (IOException 발생)
-      con = (HttpURLConnection)(url.openConnection());
+      con = (HttpURLConnection)(url.openConnection());  // openConnection()커넥션 호출로 접속
       
       /*
        * HTTP 응답코드
@@ -86,7 +86,7 @@ public class MainWrapper {
        */
       // 접속 여부 확인
       int responseCode = con.getResponseCode();
-      System.out.println("접속여부: " + (responseCode == HttpURLConnection.HTTP_OK));  
+      System.out.println("접속여부: " + (responseCode == HttpURLConnection.HTTP_OK));  // 응답코드를 숫자대신 HTTP_OK 필드값을 사용해서 200을 입력
       
       // 요청 헤더(User-Agent) : 무엇으로 접속했는가?
       String userAgent = con.getRequestProperty("User-Agent");

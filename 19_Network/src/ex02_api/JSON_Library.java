@@ -175,7 +175,7 @@ public class JSON_Library {
   }
   
   public static void main(String[] args) {
-    ex01();
+    ex06();
   }
 
 }

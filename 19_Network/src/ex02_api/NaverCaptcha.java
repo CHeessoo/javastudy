@@ -86,9 +86,11 @@ public class NaverCaptcha {
     BufferedInputStream bin = null; // 읽어들인 이미지를
     BufferedOutputStream bout = null; // PC에 저장
     
-    String key = getKey();
+    String key = null;
 
     try {
+      
+      key = getKey();
 
       String spec = "https://openapi.naver.com/v1/captcha/ncaptcha.bin?key=" + key; // 발급받은 캡차키를 다시 전달
 
@@ -145,6 +147,15 @@ public class NaverCaptcha {
     return key;
   }
 
+  /**
+   * 사용자 입력값 검증 요청<br>
+   * 캡차키와 이미지를 받아온 뒤,<br>
+   * 사용자가 이미지를 보고 입력한 값을 받아서 키값과 이미지 내용이 동일한지 검사한다.<br>
+   * 
+   * {"result":true,"responseTime":84.6}<br>
+   * result : true / false 여부를 반환 <br>
+   * responseTime : 응답에 걸린 시간을 반환 (7200초를 초과했을 때는 -1을 반환)
+   */
   private static void validInput() {
     
     URL url = null;

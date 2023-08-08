@@ -1,8 +1,8 @@
 package ex02_api;
 
-/*
- * 네이버 개발자 센터에서 제공되는 코드 설명
- */
+
+ // 네이버 개발자 센터에서 제공되는 코드 설명
+ 
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -53,6 +53,7 @@ public class Temp {
     
     try {
       
+      // 요청 HTTP 메소드
       con.setRequestMethod("GET");
       
       for(Entry<String, String> entry : requestHeaders.entrySet()) {

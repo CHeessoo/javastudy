@@ -89,7 +89,7 @@ public class MainWrapper {
       System.out.println("접속여부: " + (responseCode == HttpURLConnection.HTTP_OK));  // 응답코드를 숫자대신 HTTP_OK 필드값을 사용해서 200을 입력
       
       // 요청 헤더(User-Agent) : 무엇으로 접속했는가?
-      String userAgent = con.getRequestProperty("User-Agent");
+      String userAgent = con.getRequestProperty("User-Agent");  // RequestProperty을 사용하면 요청 헤더에 접근
       System.out.println("User-Agent: " + userAgent);
       
       // 요청 헤더(Referer) : 이전 주소가 무엇인가?

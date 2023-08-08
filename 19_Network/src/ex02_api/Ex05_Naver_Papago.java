@@ -48,7 +48,7 @@ public class Ex05_Naver_Papago {
       // OutputStream을 이용해서 POST 데이터 보내기
       bout = new BufferedOutputStream(con.getOutputStream()); // 서버로 데이터를 보낸다.
       bout.write(params.getBytes());  // String params를 byte[] 로 변환해서 데이터를 보냄
-      bout.flush(); // 버퍼에 있는 데이터를 모두 처리하라는 의미
+      bout.flush(); // 버퍼에 혹시 모르게 남아있는 데이터를 모두 처리하라는 의미
       
       // Write()함수를 cpu가 처리했다고 해도 모든 데이터가 물리적으로 디스크에 전부 저장되지 않을 수도 있다. 
       // Write()한 파일을 다시 읽거나 할때는 반드시 Flush()해주는게 좋다.

@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 
 // 네이버 파파고 번역 api 적용
-public class NaverPapago {
+public class Ex05_Naver_Papago {
 
   public static void main(String[] args) {
     

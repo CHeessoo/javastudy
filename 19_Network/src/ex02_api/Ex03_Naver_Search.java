@@ -15,7 +15,7 @@ import java.net.URLEncoder;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class MainWrapper {
+public class Ex03_Naver_Search {
   
   public static void ex01() {
     

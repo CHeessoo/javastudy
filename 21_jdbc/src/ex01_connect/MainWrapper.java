@@ -43,6 +43,11 @@ public class MainWrapper {
     }
   }
   
+  // 3. 접속 정보를 별도의 파일(프로퍼티 파일)에 저장 (.gitignore 대비)
+  //    1) .gitignore 파일에 db.properties 목록 추가하기
+  //    2) git push origin main
+  //    3) db.properties 파일 만들기
+  
   public static void main(String[] args) {
     // ex01(), ex02() 두 클래스 모두 실행해야함.
     ex01(); // 클래스 Load

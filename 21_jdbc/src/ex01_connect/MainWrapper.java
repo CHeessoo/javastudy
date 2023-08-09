@@ -102,7 +102,7 @@ public class MainWrapper {
       Properties p = new Properties();
       p.load(reader);  
       
-      // Connection 객체 생성
+      // Connection 
       con = DriverManager.getConnection(p.getProperty("url"), p.getProperty("user"), p.getProperty("password"));
       
     } catch (Exception e) {

@@ -50,7 +50,7 @@ public class MainWrapper {
   public static void ex02() {
     
     // Stream 생성
-    Stream<String> stream = Stream.of("봄", "여름", "가을", "겨울");
+    Stream<String> stream = Stream.of("봄", "여름", "가을", "겨울"); // Stream.of() 메소드 : Stream의 초기화를 위해 사용하는 메소드
     
     // Consumer 생성 (람다 표현식 생성)
     Consumer<String> consumer = (t) -> System.out.println(t);

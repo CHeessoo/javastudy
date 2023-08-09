@@ -1,4 +1,4 @@
-package ex02_insert;
+package ex03_update;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,24 +8,29 @@ import connect.DB_Connect;
 import dto.UserDto;
 
 public class MainWrapper {
-
+  
   public static void main(String[] args) {
     
-    // User 정보 입력
+    // 수정
+    // 수정할 USER_NO >>> 2
+    // 수정할 USER_NAME >>> john
+    // 1행이 수정되었습니다.
+    
+    // 수정할 USER_NO 정보 입력
     Scanner sc = new Scanner(System.in);
-    System.out.print("USER_ID >>> ");
-    String user_id = sc.next();
+    System.out.print("수정할 USER_NO >>> ");
+    int user_no = sc.nextInt();
     sc.nextLine();
-    System.out.print("USER_NAME >>> ");
+    System.out.print("수정할 USER_NAME >>> ");
     String user_name = sc.nextLine();
     sc.close();
     
     // UserDto 객체 생성
     UserDto user = new UserDto();
-    user.setUser_id(user_id);
+    user.setUser_no(user_no);
     user.setUser_name(user_name);
     
-    // Connection 객체 선언 (DB 접속) 
+    // Connection 객체 선언 (DB 접속)
     Connection con = null;
     
     // PreparedStatement 객체 선언 (쿼리문 실행)
@@ -38,21 +43,22 @@ public class MainWrapper {
       
       // 쿼리문
       String sql = "";
-      sql += "INSERT INTO USER_T (USER_NO, USER_ID, USER_NAME, JOINED_AT) ";  // 코드가 길어져서 나눈것 뿐 이어서 작성해도 상관 없다.
-      sql += "VALUES(USER_SEQ.NEXTVAL, ?, ?, SYSDATE)";  // 변수가 들어갈 자리는 ?(물음표)를 적어주는게 정해진 약속이다.
+      sql += "UPDATE USER_T";
+      sql += "   SET USER_NAME = ?";
+      sql += " WHERE USER_NO = ?";
       
-      // PreparedStatement 객체 생성 (항상 쿼리문을 먼저 준비 한 뒤 생성한다.)
+      // PreparedStatement 객체 생성
       ps = con.prepareStatement(sql);
       
       // 쿼리문에 변수 넣기
-      ps.setString(1, user.getUser_id());    // 1번째 물음표 ← user.getUser_id()
-      ps.setString(2, user.getUser_name());  // 2번째 물음표 ← user.getUser_name()
+      ps.setString(1, user.getUser_name());   // 1번째 물음표 ← user.getUser_name()
+      ps.setInt(2, user.getUser_no());        // 2번째 물음표 ← user.getUser_no()
       
-      // 쿼리문 실행 : insert 된 행의 개수가 반환된다.
-      int insertResult = ps.executeUpdate();
+      // 쿼리문 실행 : update 된 행의 개수가 반환된다.
+      int updateRsult = ps.executeUpdate();
       
-      // 결과 
-      System.out.println(insertResult + "개의 행이 삽입되었습니다.");
+      // 결과
+      System.out.println(updateRsult + "행이 수정되었습니다.");
       
       // 커밋? 안 한다.
       // con.setAutoCommit(true); ← 기본값으로 사용되고 있다.
@@ -67,6 +73,7 @@ public class MainWrapper {
         e.printStackTrace();
       }
     }
+    
   }
 
 }

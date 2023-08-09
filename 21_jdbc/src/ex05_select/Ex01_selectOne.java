@@ -24,7 +24,7 @@ public class Ex01_selectOne {
     // Connection 객체 선언 (DB 접속)
     Connection con = null;
     
-    // PreparedStatemete 객체 선언 (쿼리문 실행)
+    // PreparedStatemet 객체 선언 (쿼리문 실행)
     PreparedStatement ps = null;
     
     // ResultSet 객체 선언 (검색 결과 처리)
@@ -41,7 +41,7 @@ public class Ex01_selectOne {
       sql += "  FROM USER_T";
       sql += " WHERE USER_NO = ?";  // 구분하는 공백을 주의해야한다.
       
-      // PreparedStatemente 객체 생성
+      // PreparedStatement 객체 생성
       ps = con.prepareStatement(sql);
       
       // 쿼리문에 변수 넣기
@@ -58,7 +58,7 @@ public class Ex01_selectOne {
         
         // 검색 결과 행 → UserDto 객체 생성           ResultSet으로 가져온건 바로 가공 해야 한다.
         user = new UserDto();
-        user.setUser_no(rs.getInt("USER_NO"));
+        user.setUser_no(rs.getInt("USER_NO"));  // 칼럼의 이름으로 확인해보는 버전
         user.setUser_id(rs.getString("USER_ID"));
         user.setUser_name(rs.getString("USER_NAME"));
         user.setJoined_at(rs.getDate("JOINED_AT"));

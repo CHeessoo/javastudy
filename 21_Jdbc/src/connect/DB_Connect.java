@@ -15,7 +15,7 @@ public class DB_Connect {
     
     try (BufferedReader reader = new BufferedReader(new FileReader("src/db.properties"))){
       
-      // 오라클드라이버 클래스 로드
+      // OracleDriver 클래스 load
       Class.forName("oracle.jdbc.OracleDriver"); 
       
       // 프로퍼티 파일 -> 프로퍼티 객체
@@ -31,6 +31,4 @@ public class DB_Connect {
      return con;
   }
 
-  
-  
 }

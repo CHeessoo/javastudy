@@ -93,41 +93,6 @@ public class MainWrapper {
           e2.printStackTrace();
         }
         
-        
-        
-        /* 내 답안(누적 못함)
-        File dir = new File("C:/storage");
-        File logFile = new File(dir, "log.txt");
-        
-        BufferedOutputStream bout = null;
-        
-        Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
-        String strDate = sdf.format(date);
-        byte[] bDate = strDate.getBytes();
-        String eMessage = e.getMessage();
-        byte[] bMessage = eMessage.getBytes();
-        int nl = '\n';
-        
-        try {
-          
-          bout = new BufferedOutputStream(new FileOutputStream(logFile));
-          
-          if(bout != null) {
-            bout = new BufferedOutputStream(new FileOutputStream(logFile, true));
-          }
-          
-          bout.write(bDate);
-          bout.write(bMessage);
-          bout.write(nl);
-          
-          bout.close();
-          
-        } catch (Exception e2) {
-          e2.printStackTrace();
-        }
-        */
-        
       }
     }
   }

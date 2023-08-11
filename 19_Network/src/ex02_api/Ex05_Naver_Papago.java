@@ -25,6 +25,7 @@ public class Ex05_Naver_Papago {
       Scanner sc = new Scanner(System.in);
       System.out.print("번역할 한국어 입력 >>> ");
       String text = sc.nextLine();
+      sc.close();
       
       String spec = "https://openapi.naver.com/v1/papago/n2mt";
       String clientId = "i8c_oqXanvYAot3MyrU7";

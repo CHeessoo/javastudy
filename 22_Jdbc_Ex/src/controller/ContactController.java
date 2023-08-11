@@ -6,7 +6,6 @@ import java.util.Map;
 import dto.ContactDto;
 import service.ContactService;
 import service.ContactServiceImpl;
-import view.ContactMain;
 
 //사용자가 입력한 값이 DB까지 전달되는 순서
 //ContactMain -> ContactController -> ContactService -> ContactDao -> DB

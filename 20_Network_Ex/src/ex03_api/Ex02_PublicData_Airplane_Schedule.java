@@ -47,7 +47,7 @@ public class Ex02_PublicData_Airplane_Schedule {
     try {
       
       String spec = "http://openapi.airport.co.kr/service/rest/FlightScheduleList/getIflightScheduleList";
-      String serviceKey = "Y/bUXEm77nwFzucXtwR/yC2zlguLqEDalE+Dv/U0FIX4dbu53yc2rnfUZ4fkQAPgYe8RNzbcZIpnS7q4lbBopA==";
+      String serviceKey = "Y/bUXEm77nwFzucXtwR/yC2zlguLqEDalE+Dv/U0FIX4dbu53yc2rnfUZ4fkQAPgYe8RNzbcZIpnS7q4lbBopA=="; // 공공데이터포털은 서비스키 오류가 계속 뜨면 사이트에 직접 문의해야함
       String pageNo = "1";
       String schDate = new SimpleDateFormat("YYYYMMDD").format(new Date()); // 실행할 때 마다 현재 날짜를 기준으로 함
       String schDeptCityCode = "ICN";
